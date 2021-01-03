@@ -5,9 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib" 
         mc:Ignorable="d"
-        Title="Chapter4" Height="450" Width="800">
+        xmlns:local="clr-namespace:EPTIS.Chapter4"
+        xmlns:localMyself ="clr-namespace:EPTIS"
+        Title="{x:Static localMyself:Chapter4Window.WindowTitle}" Height="450" Width="800">
     <Window.Resources>
         <sys:String x:Key="myString">Hello WPF Resource!</sys:String>
+        <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="SkyBlue"/>
+        </Style>
+        <XmlDataProvider x:Key="InventoryData" XPath="Inventory/Books">
+            <x:XData>
+                <Supermarket xmlns ="">
+                    <Fruits>
+                        <Fruit Name="Peach"/>
+                        <Fruit Name="Banana"/>
+                        <Fruit Name="Orange"/>
+                    </Fruits>
+                    <Drinks>
+                        <Drink Name ="Coca Cola"/>
+                        <Drink Name ="PEPSI Cola"/>
+                    </Drinks>
+                </Supermarket>
+            </x:XData>
+        </XmlDataProvider>
     </Window.Resources>
     <StackPanel>
         <TextBox Margin="5"/>
@@ -21,6 +41,21 @@
                 Click="Button_Click"/>
         <TextBox Text="{StaticResource ResourceKey=myString}" Margin="5"/>
         <TextBox x:Name="textBox1" Margin="5"/>
-        <Button x:Name="buttonShowResource" Content="Show" Click="Button_Click" Margin="5"/>
+        <Button x:Name="buttonShowResource"
+                Content="Show" 
+                Click="Button_Click" 
+                Margin="5"
+                Background="{x:Null}"/>
+        <local:MyButton Content="打开一个新窗体" UserWindowType="{x:Type TypeName=localMyself:Chapter4Window}" Margin="5"/>
+        <ListBox Margin="5">
+            <ListBox.ItemsSource>
+                <x:Array Type="sys:String">
+                    <sys:String>Tim</sys:String>
+                    <sys:String>Tom</sys:String>
+                    <sys:String>Victor</sys:String>
+                </x:Array>
+            </ListBox.ItemsSource>
+        </ListBox>
+        <TextBlock FontSize="32" Text="{x:Static localMyself:Chapter4Window.ShowText}"/>
     </StackPanel>
 </Window>

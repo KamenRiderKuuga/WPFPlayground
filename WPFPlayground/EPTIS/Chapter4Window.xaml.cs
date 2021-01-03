@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace EPTIS
 {
     /// <summary>
-    /// Chapter3.xaml 的交互逻辑
+    /// Chapter4.xaml 的交互逻辑
     /// </summary>
     public partial class Chapter4Window : Window
     {
@@ -24,6 +24,9 @@ namespace EPTIS
         {
             InitializeComponent();
         }
+
+        public static string WindowTitle = "山高月小";
+        public static string ShowText { get { return "水落石出"; } }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

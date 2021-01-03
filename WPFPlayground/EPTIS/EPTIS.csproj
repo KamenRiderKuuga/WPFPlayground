@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="Chapter3\Human.cs" />
     <Compile Include="Chapter3\StringToHumanTypeConverter.cs" />
+    <Compile Include="Chapter4\MyButton.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
