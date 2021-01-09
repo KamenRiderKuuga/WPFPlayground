@@ -5,8 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EPTIS"
         mc:Ignorable="d"
-        Title="Chapter5Window" Height="450" Width="800">
+        Title="Chapter5Window" Height="600" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Margin="10" 
+                  BorderBrush="Gray" 
+                  Grid.Row="0" 
+                  Grid.ColumnSpan="2">
+            <GroupBox.Header>
+                <TextBlock Text="🙂" FontSize="30"></TextBlock>
+            </GroupBox.Header>
+            <TextBlock TextWrapping="WrapWithOverflow" 
+                       Margin="10"
+                       Text="一棵树、一匹马、一头大象和一只鸡在一起，打一种日用品。"></TextBlock>
+        </GroupBox>
+        <ListBox Margin="5" Grid.Row="1">
+            <CheckBox x:Name="checkBoxTim" Content="Tim"/>
+            <CheckBox x:Name="checkBoxTom" Content="Tom"/>
+            <CheckBox x:Name="checkBoxBruce" Content="Bruce"/>
+            <Button x:Name="buttonMess" Content="Mess"/>
+            <Button x:Name="buttonOwen" Content="Owen"/>
+            <Button x:Name="buttonVictor" Content="Victor" Click="buttonVictor_Click"/>
+        </ListBox>
+        <ListBox x:Name="listBoxEmployee" Margin="5" Grid.Row="1" Grid.Column="1"/>
+        <Button Margin="10" Grid.Row="2">
+            <Button Margin="10">
+                <Button Margin="10">
+                    <Button Margin="10">
+                        <Button Margin="10" Content="OK">
+                        </Button>
+                    </Button>
+                </Button>
+            </Button>
+        </Button>
+        <Border BorderThickness="1" 
+                BorderBrush="Gray" 
+                Grid.Row="2" 
+                Grid.Column="1"
+                Margin="10">
+            <Grid ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="0.5in"/>
+                    <RowDefinition Height="1cm"/>
+                    <RowDefinition Height="30pt"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

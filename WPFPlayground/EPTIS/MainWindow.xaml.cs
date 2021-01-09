@@ -40,6 +40,9 @@ namespace EPTIS
                     window = new Chapter4Window();
                     break;
 
+                case nameof(buttonChapter5):
+                    window = new Chapter5Window();
+                    break;
             }
 
             window.Show();
