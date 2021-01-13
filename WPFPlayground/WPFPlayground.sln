@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanLoginUI", "CleanLoginU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPTIS", "EPTIS\EPTIS.csproj", "{636398BB-5894-41C7-95CB-A64646DF451B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountdownTool", "CountdownTool\CountdownTool.csproj", "{CECFEF81-3D63-44AD-BC5E-DBF8192303AF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{636398BB-5894-41C7-95CB-A64646DF451B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{636398BB-5894-41C7-95CB-A64646DF451B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{636398BB-5894-41C7-95CB-A64646DF451B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CECFEF81-3D63-44AD-BC5E-DBF8192303AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CECFEF81-3D63-44AD-BC5E-DBF8192303AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CECFEF81-3D63-44AD-BC5E-DBF8192303AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CECFEF81-3D63-44AD-BC5E-DBF8192303AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
