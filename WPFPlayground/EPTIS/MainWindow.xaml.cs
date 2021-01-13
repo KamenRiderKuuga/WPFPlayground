@@ -33,7 +33,7 @@ namespace EPTIS
             switch (button.Name)
             {
                 case nameof(buttonChapter3):
-                    window = new Window1();
+                    window = new Chapter3Window();
                     break;
 
                 case nameof(buttonChapter4):
