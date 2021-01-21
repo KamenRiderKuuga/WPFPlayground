@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EPTIS"
         mc:Ignorable="d"
-        Title="Chapter5Window" Height="600" Width="800">
+        Title="Chapter5Window" Height="800" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition MinHeight="240"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -88,6 +89,60 @@
             <TextBox Grid.Row="2" Grid.ColumnSpan="5" BorderBrush="Black"/>
             <Button Content="提交" Grid.Column="2" Grid.Row="4"/>
             <Button Content="清除" Grid.Column="4" Grid.Row="4"/>
+        </Grid>
+        <Grid Grid.Row="3"
+              Grid.Column="1"
+              Margin="10">
+            <GroupBox Header="请选择没有错别字的成语"
+                      BorderBrush="Black" 
+                      Margin="5"
+                      Height="Auto">
+                <StackPanel Margin="5">
+                    <CheckBox Content="A. 迫不急待"/>
+                    <CheckBox Content="B. 首曲一指"/>
+                    <CheckBox Content="C. 陈词烂调"/>
+                    <CheckBox Content="D. 哀声叹气"/>
+                    <CheckBox Content="E. 不可礼喻"/>
+                    <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                        <Button Content="清空" Width="60" Margin="5"></Button>
+                        <Button Content="确定" Width="60" Margin="5"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Canvas Margin="10" Grid.Row="4">
+            <TextBlock Text="用户名:" 
+                       Canvas.Top="12"
+                       Canvas.Left="10"/>
+            <TextBox Height="20"
+                     Width="300"
+                     Canvas.Top="10"
+                     Canvas.Left="60"/>
+            <TextBlock Text="密码:"
+                       Canvas.Top="42"
+                       Canvas.Left="10"/>
+            <PasswordBox Height="20"
+                     Width="300"
+                     Canvas.Top="40"
+                     Canvas.Left="60"/>
+            <Button Content="确定"
+                    Width="60"
+                    Canvas.Bottom="10"
+                    Canvas.Right="80"/>
+            <Button Content="清除"
+                    Width="60"
+                    Canvas.Bottom="10"
+                    Canvas.Right="10"/>
+        </Canvas>
+        <Grid Grid.Row="4" 
+              Grid.Column="1"
+              Margin="10">
+            <DockPanel>
+                <TextBox Height="25" DockPanel.Dock="Top"/>
+                <TextBox Width="150" DockPanel.Dock="Left"/>
+                <TextBox/>
+            </DockPanel>
         </Grid>
     </Grid>
 </Window>
