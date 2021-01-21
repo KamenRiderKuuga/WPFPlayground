@@ -13,6 +13,7 @@
             <RowDefinition/>
             <RowDefinition Height="Auto" />
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -144,5 +145,68 @@
                 <TextBox/>
             </DockPanel>
         </Grid>
+        <Grid Grid.Row="5"
+              Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.ColumnSpan="3" 
+                     BorderBrush="Black"/>
+            <TextBox Grid.Row="1" 
+                     BorderBrush="Black"/>
+            <GridSplitter Grid.Row="1"
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Center"
+                          Grid.Column="1"
+                          Width="5"
+                          Background="Gray"
+                          ShowsPreview="True">
+            </GridSplitter>
+            <TextBox Grid.Row="1"
+                     Grid.Column="2"
+                     BorderBrush="Black"/>
+        </Grid>
+        <WrapPanel Grid.Row="5"
+                   Grid.Column="1"
+                   Margin="10">
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+            <Button Width="50"
+                    Height="50"
+                    Content="OK"></Button><Button Width="50"
+                    Height="50"
+                    Content="OK"></Button>
+        </WrapPanel>
     </Grid>
 </Window>
