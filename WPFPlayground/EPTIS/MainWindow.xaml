@@ -27,13 +27,14 @@
         </TextBlock>
         <Grid Margin="0 60 0 0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="26"/>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
             <Button Grid.Column="0" x:Name="buttonChapter3"
@@ -44,6 +45,11 @@
 
             <Button Grid.Column="2" x:Name="buttonChapter5" 
                     Content="第5章:控件与布局"/>
+
+            <Button Grid.Column="0" 
+                    Grid.Row="1"
+                    x:Name="buttonChapter6"
+                    Content="第6章:深入浅出话Binding"/>
 
         </Grid>
     </Grid>
