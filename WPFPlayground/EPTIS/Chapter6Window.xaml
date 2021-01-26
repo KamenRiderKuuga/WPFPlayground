@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:EPTIS"
         mc:Ignorable="d"
         Title="Chapter6Window" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <TextBox x:Name="textBoxName" BorderBrush="Black" Margin="5"/>
+        <Button Content="Add Age" Click="Button_Click" Margin="5"/>
+    </StackPanel>
 </Window>
