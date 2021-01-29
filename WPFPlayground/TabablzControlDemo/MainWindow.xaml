@@ -48,6 +48,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -92,7 +93,30 @@
                                  Grid.ColumnSpan="3"
                                  VerticalAlignment="Center"
                                  Margin="15 0"/>
-                            <Button x:Name="btnRegister" Grid.Row="5"
+                            <CheckBox 
+                                Grid.Row="5"
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"
+                                IsChecked="True"
+                                Content="选项一"
+                                Margin="15"/>
+                            <CheckBox 
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"
+                                IsChecked="True"
+                                Content="选项二"
+                                Margin="15"/>
+                            <CheckBox 
+                                Grid.Row="5"
+                                Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"
+                                IsChecked="True"
+                                Content="选项三"
+                                Margin="15"/>
+                            <Button x:Name="btnRegister" Grid.Row="6"
                                 Grid.Column ="1"
                                 FontSize="26"
                                 Height="60"
