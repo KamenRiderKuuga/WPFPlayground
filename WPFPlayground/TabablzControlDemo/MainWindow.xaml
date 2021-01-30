@@ -120,7 +120,8 @@
                                 Grid.Column ="1"
                                 FontSize="26"
                                 Height="60"
-                                Content="注   册"></Button>
+                                Content="注   册"
+                                Click="Button_Click"></Button>
                         </Grid>
                     </TabItem>
                     <TabItem Header="批量修改">

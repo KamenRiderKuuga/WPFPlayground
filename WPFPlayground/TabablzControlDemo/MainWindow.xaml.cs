@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TabablzControlDemo.UserContorls;
 
 namespace TabablzControlDemo
 {
@@ -25,15 +27,29 @@ namespace TabablzControlDemo
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as Button)?.Name)
             {
+                case nameof(btnRegister):
+                    if (!ValidateValue(out var message))
+                    {
+                        SimpleDialog simpleDialog = new SimpleDialog("RootDialog", message);
+                        await DialogHost.Show(simpleDialog);
+                    }
+                    else
+                    {
+                        ProgressBar progressBar = new ProgressBar();
+                        progressBar.Width = 200;
+                        progressBar.IsIndeterminate = true;
+                        await DialogHost.Show(progressBar, "RootDialog", DialogOpened_Event, DialogClosing_Event);
+                    }
+                    break;
+
                 case nameof(btnClose):
                     this.Close();
                     break;
             }
-        }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
