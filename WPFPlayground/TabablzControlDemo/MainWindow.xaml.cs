@@ -1,18 +1,8 @@
 ﻿using MaterialDesignThemes.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TabablzControlDemo.UserContorls;
 
 namespace TabablzControlDemo
@@ -50,6 +40,46 @@ namespace TabablzControlDemo
                     this.Close();
                     break;
             }
+        }
+
+        /// <summary>
+        /// 验证界面控件的值
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private bool ValidateValue(out string message)
+        {
+            message = "";
+
+            // 做一些对于值的验证
+
+            return true;
+        }
+
+        private void DialogOpened_Event(object sender, DialogOpenedEventArgs eventArgs)
+        {
+            Task.Run(() =>
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    eventArgs.Session.Close(false);
+                });
+            });
+        }
+
+        private void DialogClosing_Event(object sender, DialogClosingEventArgs eventArgs)
+        {
+            Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(300);
+
+                Dispatcher.Invoke(() =>
+                {
+                    SimpleDialog simpleDialog = new SimpleDialog("RootDialog", "执行成功！");
+                    DialogHost.Show(simpleDialog);
+                });
+            });
+        }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
