@@ -23,6 +23,12 @@ namespace EPTIS
             binding.Path = new PropertyPath("Name");
 
             BindingOperations.SetBinding(textBoxName, TextBox.TextProperty, binding);
+             
+            // 继承于FrameworkElement的UI元素类型，比如TextBox还可以写成
+            textBoxName.SetBinding(TextBox.TextProperty, binding);
+
+            // 或者简写成
+            textBoxName.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = _student = new Student()});
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
