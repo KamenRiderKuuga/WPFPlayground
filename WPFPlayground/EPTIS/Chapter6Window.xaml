@@ -4,10 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EPTIS"
+        xmlns:sys ="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Chapter6Window" Height="450" Width="800">
     <StackPanel>
+        <StackPanel.Resources>
+            <sys:String x:Key="myString">
+                菩提本无树，明镜亦非台。
+                本来无一物，何处惹尘埃。
+            </sys:String>
+        </StackPanel.Resources>
         <TextBox x:Name="textBoxName" BorderBrush="Black" Margin="5"/>
         <Button Content="Add Age" Click="Button_Click" Margin="5"/>
+        <GroupBox Header="绑定了Slider的TextBox" Margin="5">
+            <StackPanel>
+                <TextBox Text ="{Binding Path=Value,ElementName=slider1}" BorderBrush="Black" Margin="5"/>
+                <Slider x:Name="slider1" Minimum="0" Maximum="100" Margin="5"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="在Binding源/绑定了源的目标属性更新时会触发事件的TextBox" Margin="5">
+            <StackPanel>
+                <TextBox x:Name="textboxWithNotify" 
+                 Text ="{Binding Value,
+                         ElementName=slider2,
+                         NotifyOnSourceUpdated=True,
+                         NotifyOnTargetUpdated=True,
+                         Mode=TwoWay}" 
+                 BorderBrush="Black" Margin="5"/>
+                <Slider x:Name="slider2" Minimum="0" Maximum="100" Margin="5"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="使用C#进行绑定的TextBox" Margin="5">
+            <StackPanel>
+                <TextBox x:Name="textBoxBindingWithCode" BorderBrush="Black" Margin="5"/>
+                <TextBox x:Name="textBoxBeBinding" BorderBrush="Black" Margin="5"/>
+            </StackPanel>
+        </GroupBox>
+        <TextBlock Margin="5"
+                   TextWrapping="Wrap"
+                   FontSize="16"
+                   Text="{Binding .,Source={StaticResource ResourceKey=myString} }"/>
     </StackPanel>
 </Window>
