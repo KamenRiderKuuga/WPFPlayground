@@ -95,6 +95,7 @@
     <Compile Include="Chapter6Window.xaml.cs">
       <DependentUpon>Chapter6Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Chapter6\Person.cs" />
     <Compile Include="Chapter6\Student.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

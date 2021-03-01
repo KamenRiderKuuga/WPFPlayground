@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EPTIS"
+        xmlns:local="clr-namespace:EPTIS.Chapter6"
         xmlns:sys ="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Chapter6Window" Height="450" Width="800">
+        Title="Chapter6Window" MinHeight="450" Width="800">
     <StackPanel>
         <StackPanel.Resources>
             <sys:String x:Key="myString">
@@ -14,6 +14,9 @@
                 本来无一物，何处惹尘埃。
             </sys:String>
         </StackPanel.Resources>
+        <StackPanel.DataContext>
+            <local:Person ID="1" Name="Tim" Age="16"/>
+        </StackPanel.DataContext>
         <TextBox x:Name="textBoxName" BorderBrush="Black" Margin="5"/>
         <Button Content="Add Age" Click="Button_Click" Margin="5"/>
         <GroupBox Header="绑定了Slider的TextBox" Margin="5">
@@ -44,5 +47,20 @@
                    TextWrapping="Wrap"
                    FontSize="16"
                    Text="{Binding .,Source={StaticResource ResourceKey=myString} }"/>
+        <StackPanel Background="LightBlue">
+            <TextBox Text="{Binding ID}" Margin="5"/>
+            <TextBox Text="{Binding Name}" Margin="5"/>
+            <TextBox Text="{Binding Age}" Margin="5"/>
+            <StackPanel>
+                <StackPanel.DataContext>
+                    <sys:String>
+                        Hello DataContext!
+                    </sys:String>
+                </StackPanel.DataContext>
+                <TextBlock Text="{Binding}" Margin="5"/>
+                <TextBlock Text="{Binding}" Margin="5"/>
+                <TextBlock Text="{Binding}" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
     </StackPanel>
 </Window>
