@@ -1,6 +1,8 @@
 ﻿using EPTIS.Chapter6;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,12 +15,22 @@ namespace EPTIS
     public partial class Chapter6Window : Window
     {
         private Student _student;
+        private ObservableCollection<Person> _persons;
+        private DataTable _dt;
 
         public Chapter6Window()
         {
             InitializeComponent();
 
             _student = new Student();
+            _persons = new ObservableCollection<Person>()
+            {
+                {new Person {ID = 1,Age = 2 , Name = "人造人1号"} },
+                {new Person {ID = 2,Age = 4 , Name = "人造人2号"} },
+                {new Person {ID = 3,Age = 6 , Name = "人造人3号"} },
+            };
+
+            listBoxPersons.ItemsSource = _persons;
 
             Binding binding = new Binding();
             binding.Source = _student;
@@ -36,6 +48,18 @@ namespace EPTIS
             textboxWithNotify.TargetUpdated += TextboxTargetUpdate_Event;
             textBoxBindingWithCode.SetBinding(TextBox.TextProperty, new Binding("Text.Length") { Source = textBoxBeBinding, Mode = BindingMode.OneWay });
             textBoxBeBinding.SetBinding(TextBox.TextProperty, new Binding("/[2]") { Source = new List<string>() { "Tim", "Tom", "Blog" }, Mode = BindingMode.OneWay });
+        }
+
+        private void LoadData()
+        {
+            _dt = new DataTable();
+            _dt.Columns.Add("ID", typeof(int));
+            _dt.Columns.Add("Name", typeof(string));
+            _dt.Columns.Add("Age", typeof(int));
+            _dt.Rows.Add(1, "第一个", 18);
+            _dt.Rows.Add(2, "第二个", 23);
+            _dt.Rows.Add(3, "第三个", 26);
+            listViewPersons.ItemsSource = _dt.DefaultView;
         }
 
         /// <summary>
@@ -61,6 +85,12 @@ namespace EPTIS
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _student.Name += "Name";
+        }
+
+        private void Button_Load_Click(object sender, RoutedEventArgs e)
+        {
+            // 初始化DataTable数据
+            LoadData();
         }
     }
 }

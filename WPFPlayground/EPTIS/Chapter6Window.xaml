@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EPTIS.Chapter6"
         xmlns:sys ="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Chapter6Window" MinHeight="450" Width="800">
+        Title="Chapter6Window" Height="800" Width="800">
     <StackPanel>
         <StackPanel.Resources>
             <sys:String x:Key="myString">
@@ -61,6 +61,40 @@
                 <TextBlock Text="{Binding}" Margin="5"/>
                 <TextBlock Text="{Binding}" Margin="5"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="5" Background="LightBlue">
+            <TextBlock Text="ID"></TextBlock>
+            <TextBox Text="{Binding ElementName=listBoxPersons, Path=SelectedItem.ID}"></TextBox>
+            <TextBlock Text="Persons"></TextBlock>
+            <ListBox x:Name="listBoxPersons">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding ID}" Margin="10 0"/>
+                            <TextBlock Text="{Binding Name}" Margin="10 0"/>
+                            <TextBlock Text="{Binding Age}" Margin="10 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Margin="5" Background="LightBlue">
+            <ListView x:Name="listViewPersons">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID"
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding ID}"/>
+                        <GridViewColumn Header="姓名" 
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="年龄" 
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding Age}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="Load" Click="Button_Load_Click"></Button>
         </StackPanel>
     </StackPanel>
 </Window>
