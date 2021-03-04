@@ -94,7 +94,22 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Content="Load" Click="Button_Load_Click"></Button>
+            <Button x:Name="btnLoadDataTable" Content="Load" Click="Button_Load_Click"></Button>
+        </StackPanel>
+        <StackPanel Margin="5">
+            <ListView x:Name="listViewConfigs">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="200" 
+                                        Header="配置节点名称"
+                                        DisplayMemberBinding="{Binding XPath=@key}"/>
+                        <GridViewColumn Width="300" 
+                                        Header="配置节点内容"
+                                        DisplayMemberBinding="{Binding XPath=@value}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="btnLoadConfig" Content="加载配置项" Click="Button_Load_Click"></Button>
         </StackPanel>
     </StackPanel>
 </Window>

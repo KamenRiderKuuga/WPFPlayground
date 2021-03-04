@@ -89,8 +89,35 @@ namespace EPTIS
 
         private void Button_Load_Click(object sender, RoutedEventArgs e)
         {
-            // 初始化DataTable数据
-            LoadData();
+            switch ((sender as Button)?.Name)
+            {
+                case nameof(btnLoadDataTable):
+                    // 初始化DataTable数据
+                    LoadData();
+                    break;
+
+                case nameof(btnLoadConfig):
+                    LoadConfig();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 从文件中加载XML内容并绑定到控件
+        /// </summary>
+        private void LoadConfig()
+        {
+            XmlDataProvider xdp = new XmlDataProvider()
+            {
+                Source = new Uri($@"{AppDomain.CurrentDomain.SetupInformation.ConfigurationFile}"),
+                XPath = @"/configuration/appSettings/add",
+            };
+
+            listViewConfigs.DataContext = xdp;
+            listViewConfigs.SetBinding(ListView.ItemsSourceProperty, new Binding());
         }
     }
 }
