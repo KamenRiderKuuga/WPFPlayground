@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Xml.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -115,7 +116,16 @@ namespace EPTIS
         /// </summary>
         private void LoadLINQData()
         {
-            listViewBindingLINQ.ItemsSource = _persons;
+            XDocument xmlData = XDocument.Load($"{AppDomain.CurrentDomain.SetupInformation.ConfigurationFile}");
+            listViewBindingLINQ.SetBinding(ItemsControl.ItemsSourceProperty, new Binding()
+            {
+                Source = xmlData.Descendants("add")
+                                .Select(element => new
+                                {
+                                    ConfigItem = element.Attribute("key").Value,
+                                    ConfigContent = element.Attribute("value").Value
+                                })
+            });
         }
 
         /// <summary>

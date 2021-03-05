@@ -150,9 +150,8 @@
             <ListView x:Name="listViewBindingLINQ">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="第一列" DisplayMemberBinding="{Binding ID}"/>
-                        <GridViewColumn Header="第二列" DisplayMemberBinding="{Binding Age}"/>
-                        <GridViewColumn Header="第三列" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="配置项" DisplayMemberBinding="{Binding ConfigItem}"/>
+                        <GridViewColumn Header="内容" DisplayMemberBinding="{Binding ConfigContent}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
