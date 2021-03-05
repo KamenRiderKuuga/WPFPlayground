@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -100,9 +101,21 @@ namespace EPTIS
                     LoadConfig();
                     break;
 
+                case nameof(btnLoadLINQData):
+                    LoadLINQData();
+                    break;
+
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// 将LINQ的结果绑定到ListView
+        /// </summary>
+        private void LoadLINQData()
+        {
+            listViewBindingLINQ.ItemsSource = _persons;
         }
 
         /// <summary>
