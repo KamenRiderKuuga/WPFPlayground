@@ -50,6 +50,32 @@ namespace EPTIS
             textboxWithNotify.TargetUpdated += TextboxTargetUpdate_Event;
             textBoxBindingWithCode.SetBinding(TextBox.TextProperty, new Binding("Text.Length") { Source = textBoxBeBinding, Mode = BindingMode.OneWay });
             textBoxBeBinding.SetBinding(TextBox.TextProperty, new Binding("/[2]") { Source = new List<string>() { "Tim", "Tom", "Blog" }, Mode = BindingMode.OneWay });
+
+            ObjectDataProvider odp = new ObjectDataProvider();
+            odp.ObjectInstance = new Calculator();
+            odp.MethodName = nameof(Calculator.Add);
+            odp.MethodParameters.Add("0");
+            odp.MethodParameters.Add("0");
+
+            var bindingNum1 = new Binding("MethodParameters[0]")
+            {
+                Source = odp,
+                BindsDirectlyToSource = true,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+            };
+
+            var bindingNum2 = new Binding("MethodParameters[1]")
+            {
+                Source = odp,
+                BindsDirectlyToSource = true,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+            };
+
+            var bindingResult = new Binding(".") { Source = odp };
+
+            textNum1.SetBinding(TextBox.TextProperty, bindingNum1);
+            textNum2.SetBinding(TextBox.TextProperty, bindingNum2);
+            textNumResult.SetBinding(TextBox.TextProperty, bindingResult);
         }
 
         private void LoadData()
@@ -106,6 +132,10 @@ namespace EPTIS
                     LoadLINQData();
                     break;
 
+                case nameof(btnObjectData):
+                    CaculateByObjectDataProvider();
+                    break;
+
                 default:
                     break;
             }
@@ -126,6 +156,19 @@ namespace EPTIS
                                     ConfigContent = element.Attribute("value").Value
                                 })
             });
+        }
+
+        /// <summary>
+        /// 使用ObjectDataProvider进行计算并显示计算结果
+        /// </summary>
+        private void CaculateByObjectDataProvider()
+        {
+            ObjectDataProvider dataProvider = new ObjectDataProvider();
+            dataProvider.ObjectInstance = new Calculator();
+            dataProvider.MethodName = nameof(Calculator.Add);
+            dataProvider.MethodParameters.Add("100");
+            dataProvider.MethodParameters.Add("200");
+            MessageBox.Show(dataProvider.Data.ToString());
         }
 
         /// <summary>

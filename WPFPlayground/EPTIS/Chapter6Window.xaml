@@ -156,6 +156,13 @@
                 </ListView.View>
             </ListView>
             <Button x:Name="btnLoadLINQData" Content="加载数据" Click="Button_Load_Click"/>
+            <Button x:Name="btnObjectData" Margin="0 10 0 10" Content="计算绑定的对象函数的结果" Click="Button_Load_Click"/>
+            <StackPanel>
+                <TextBox x:Name="textNum1"/>
+                <TextBox x:Name="textNum2"/>
+                <TextBox x:Name="textNumResult"/>
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Window>
