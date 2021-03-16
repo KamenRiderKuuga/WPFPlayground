@@ -162,7 +162,18 @@
                 <TextBox x:Name="textNum2"/>
                 <TextBox x:Name="textNumResult"/>
             </StackPanel>
-            
+            <Grid x:Name="g1" Background="#ffb6b9" Height="100">
+                <DockPanel x:Name="d1" Background="#fae3d9" Margin="10">
+                    <Grid x:Name="g2" Background="#bbded6" Margin="10">
+                        <DockPanel x:Name="d2" Background="#8ac6d1" Margin="10">
+                            <TextBox Margin="10"
+                                     Text="{Binding RelativeSource=
+                                           {RelativeSource AncestorType={x:Type Grid}, AncestorLevel=1},
+                                           Path=Name}"></TextBox>
+                        </DockPanel>
+                    </Grid>
+                </DockPanel>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>
