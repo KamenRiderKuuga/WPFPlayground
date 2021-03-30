@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Threading;
 
 namespace EPTIS
 {
@@ -16,6 +17,8 @@ namespace EPTIS
     /// </summary>
     public partial class Chapter6Window : Window
     {
+        SynchronizationContext _uiSyncContext;
+
         private Student _student;
         private ObservableCollection<Person> _persons;
         private DataTable _dt;
@@ -23,6 +26,11 @@ namespace EPTIS
         public Chapter6Window()
         {
             InitializeComponent();
+
+            // 获取当前UI线程的同步上下文
+            _uiSyncContext = SynchronizationContext.Current;
+
+            new Thread(Work).Start();
 
             _student = new Student();
             _persons = new ObservableCollection<Person>()
@@ -76,6 +84,12 @@ namespace EPTIS
             textNum1.SetBinding(TextBox.TextProperty, bindingNum1);
             textNum2.SetBinding(TextBox.TextProperty, bindingNum2);
             textNumResult.SetBinding(TextBox.TextProperty, bindingResult);
+        }
+
+        void Work()
+        {
+            Thread.Sleep(5000);
+            _uiSyncContext.Post(_ => Title = "通过同步上下文更新UI内容成功", null);
         }
 
         private void LoadData()
