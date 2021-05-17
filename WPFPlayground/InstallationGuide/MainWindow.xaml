@@ -14,13 +14,8 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="14"
         FontFamily="{md:MaterialDesignFont}"
-        Title="安装引导程序" ResizeMode="CanMinimize" MinHeight="400" Height="300" Width="500"
+        Title="安装引导程序" ResizeMode="CanMinimize" MinHeight="400" Height="300" Width="300"
         mc:Ignorable="d">
-    <Window.Resources>
-        <Style BasedOn="{StaticResource MaterialDesignTextBoxBase}" TargetType="TextBox">
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-        </Style>
-    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -31,14 +26,8 @@
             <RowDefinition Height="5*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Margin="10 0 5 0" FontWeight="Regular" 
-                   VerticalAlignment="Center" Text="请选择合适的本机IP">
-            <TextBlock.ToolTip>
-                这将作为前端请求的IP地址
-            </TextBlock.ToolTip>
-        </TextBlock>
         <Grid Grid.Row="0" Margin="10 0 0 0" Grid.Column="1" Grid.ColumnSpan="2" >
-            <ComboBox Margin="0 5 10 5" VerticalAlignment="Center" x:Name="ipListBox" SelectedIndex="0">
+            <ComboBox ToolTip="这将作为前端请求的IP地址" md:HintAssist.Hint="请选择合适的本机IP" Margin="0 5 10 5" VerticalAlignment="Center" x:Name="ipListBox">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" />
@@ -58,27 +47,21 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" VerticalAlignment="Center">数据库IP</TextBlock>
-                    <TextBox Margin="5" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="1" Name="ipTextbox"></TextBox>
-                    <TextBlock Grid.Row="1" VerticalAlignment="Center">端口号</TextBlock>
-                    <TextBox Margin="5" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" Name="portTextbox"></TextBox>
-                    <TextBlock Grid.Row="2" VerticalAlignment="Center">用户名</TextBlock>
-                    <TextBox Margin="5" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Name="userNameTextBox"></TextBox>
-                    <TextBlock Grid.Row="3"  VerticalAlignment="Center">密码</TextBlock>
-                    <PasswordBox Margin="5" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Name="PasswordTextBox"></PasswordBox>
-                    <TextBlock Grid.Row="4" VerticalAlignment="Center" Margin="0 0 10 0">数据库名</TextBlock>
-                    <ComboBox Margin="5" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" x:Name="dataBaseCombox" SelectedIndex="0">
+                    <TextBox Margin="5" md:HintAssist.Hint="数据库IP" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" Name="ipTextbox"></TextBox>
+                    <TextBox Margin="5" md:HintAssist.Hint="端口号" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" Name="portTextbox"></TextBox>
+                    <TextBox Margin="5" md:HintAssist.Hint="用户名" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Name="userNameTextBox"></TextBox>
+                    <PasswordBox Margin="5" md:HintAssist.Hint="密码" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Name="PasswordTextBox"></PasswordBox>
+                    <ComboBox ToolTip="数据库名" md:HintAssist.Hint="数据库名" Margin="5" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" x:Name="dataBaseCombox" SelectedIndex="0">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding}" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <TextBox x:Name="dataBaseTextBox" Margin="5" Grid.Row="4" Grid.Column="1"></TextBox>
+                    <TextBox md:HintAssist.Hint="数据库名" x:Name="dataBaseTextBox" Margin="5" Grid.Row="4" Grid.Column="0"></TextBox>
                     <Button Grid.Column="2" Margin="5" Grid.Row="4" Height="26" Name="changeInputMethodButton" VerticalAlignment="Center"
                             Content="手动输入"/>
                 </Grid>

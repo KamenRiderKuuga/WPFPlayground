@@ -1,10 +1,6 @@
 ﻿using DynamicData;
 using ReactiveUI;
-using System;
-using System.Net;
-using System.Net.Sockets;
 using System.Reactive.Disposables;
-using System.Reactive.Linq;
 
 namespace InstallationGuide
 {
@@ -22,7 +18,7 @@ namespace InstallationGuide
             {
                 this.BindCommand(ViewModel, viewModel => viewModel.SaveConfig, view => view.saveButton).DisposeWith(disposableRegistration);
                 this.BindCommand(ViewModel, viewModel => viewModel.ChangeInputMethod, view => view.changeInputMethodButton).DisposeWith(disposableRegistration);
-                this.Bind(ViewModel, x => x.InputByHandButtonContent, view => view.changeInputMethodButton.Content, x => x, x => x.ToString()).DisposeWith(disposableRegistration);
+                this.Bind(ViewModel, x => x.InputModeButtonContent, view => view.changeInputMethodButton.Content, x => x, x => x.ToString()).DisposeWith(disposableRegistration);
                 this.Bind(ViewModel, x => x.IpAddress, view => view.ipTextbox.Text).DisposeWith(disposableRegistration);
                 this.OneWayBind(ViewModel, x => x.DBComboxVisibility, view => view.dataBaseCombox.Visibility).DisposeWith(disposableRegistration);
                 this.OneWayBind(ViewModel, x => x.DBTextBoxVisibility, view => view.dataBaseTextBox.Visibility).DisposeWith(disposableRegistration);
