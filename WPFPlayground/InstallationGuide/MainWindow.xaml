@@ -8,11 +8,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:installationguide="clr-namespace:InstallationGuide"
         xmlns:reactiveui="http://reactiveui.net"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignLightBackground}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        FontFamily="{md:MaterialDesignFont}"
         Title="安装引导程序" ResizeMode="CanMinimize" MinHeight="400" Height="300" Width="500"
-        mc:Ignorable="d"
-        FontSize="16">
+        mc:Ignorable="d">
     <Window.Resources>
-        <Style TargetType="TextBox">
+        <Style BasedOn="{StaticResource MaterialDesignTextBoxBase}" TargetType="TextBox">
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
     </Window.Resources>
@@ -42,7 +47,7 @@
             </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <GroupBox Header="数据库配置" Padding="10 10 0 0">
+            <GroupBox Header="数据库配置">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -79,7 +84,7 @@
                 </Grid>
             </GroupBox>
         </Grid>
-        <Grid Height="26" Grid.Column="1" Grid.Row="2">
+        <Grid Grid.Column="1" Grid.Row="2">
             <Button x:Name="saveButton" Margin="0 0 10 0" Content="确认保存配置" HorizontalAlignment="Right"
                     CommandParameter="{Binding ElementName=GuideWindow}"></Button>
         </Grid>
