@@ -7,12 +7,13 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Windows;
 
 namespace InstallationGuide
 {
     public class AppViewModel : ReactiveObject
     {
-        private string _ipAddress; 
+        private string _ipAddress;
         /// <summary>
         /// 数据库IP地址
         /// </summary>
@@ -30,7 +31,7 @@ namespace InstallationGuide
         /// <summary>
         /// 保存配置命令
         /// </summary>
-        public ReactiveCommand<MainWindow, Unit> SaveConfig { get; }
+        public ReactiveCommand<Window, Unit> SaveConfig { get; }
 
         private bool _inputByHand = false;
         /// <summary>
@@ -42,7 +43,7 @@ namespace InstallationGuide
             set => this.RaiseAndSetIfChanged(ref _inputByHand, value);
         }
 
-        private readonly ObservableAsPropertyHelper<bool> _dbComboxVisibility;     
+        private readonly ObservableAsPropertyHelper<bool> _dbComboxVisibility;
         /// <summary>
         /// 数据库名Combox可见性
         /// </summary>
@@ -75,13 +76,13 @@ namespace InstallationGuide
             _inputModeButtonContent = this.WhenAnyValue(x => x.InputByHand).Select(x => x ? "从列表选择" : "手动输入").ToProperty(this, x => x.InputModeButtonContent);
             _dbComboxVisibility = this.WhenAnyValue(x => x.InputByHand).Select(x => !x).ToProperty(this, x => x.DBComboxVisibility);
             _dbTextBoxVisibility = this.WhenAnyValue(x => x.InputByHand).Select(x => x).ToProperty(this, x => x.DBTextBoxVisibility);
-            
+
             ChangeInputMethod = ReactiveCommand.Create(() =>
             {
                 InputByHand = !_inputByHand;
             });
 
-            SaveConfig = ReactiveCommand.Create<MainWindow>(window => window.Close());
+            SaveConfig = ReactiveCommand.Create<Window>(window => window.Close());
 
             AddIPAddress();
         }

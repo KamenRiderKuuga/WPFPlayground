@@ -1,14 +1,18 @@
 ﻿using DynamicData;
 using ReactiveUI;
 using System.Reactive.Disposables;
+using System.Windows;
 
 namespace InstallationGuide
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : ReactiveWindow<AppViewModel>
+    public partial class MainWindow : Window, IViewFor<AppViewModel>
     {
+        public static readonly DependencyProperty ViewModelProperty = DependencyProperty
+            .Register(nameof(ViewModel), typeof(AppViewModel), typeof(MainWindow));
+
         public MainWindow()
         {
             InitializeComponent();
@@ -24,6 +28,18 @@ namespace InstallationGuide
                 this.OneWayBind(ViewModel, x => x.DBTextBoxVisibility, view => view.dataBaseTextBox.Visibility).DisposeWith(disposableRegistration);
                 this.OneWayBind(ViewModel, x => x.IpList, x => x.ipListBox.ItemsSource).DisposeWith(disposableRegistration);
             });
+        }
+
+        public AppViewModel ViewModel
+        {
+            get => (AppViewModel)GetValue(ViewModelProperty);
+            set => SetValue(ViewModelProperty, value);
+        }
+
+        object IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = (AppViewModel)value;
         }
     }
 }
